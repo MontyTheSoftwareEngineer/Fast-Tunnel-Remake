@@ -46,20 +46,20 @@ function draw() {
   background(220);
 
   // Draw the grid
-  for (let x = 0; x < gridSize; x++) {
-    for (let y = 0; y < gridSize; y++) {
-      const xPos = x * cellSize;
-      const yPos = y * cellSize;
-      fill( 255,255,255,255 );
-      rect( xPos, yPos, cellSize, cellSize )
-      let gridNum = NumFrom2D( x, y)
+  // for (let x = 0; x < gridSize; x++) {
+  //   for (let y = 0; y < gridSize; y++) {
+  //     const xPos = x * cellSize;
+  //     const yPos = y * cellSize;
+  //     fill( 255,255,255,255 );
+  //     rect( xPos, yPos, cellSize, cellSize )
+  //     let gridNum = NumFrom2D( x, y)
 
-      fill( 0,0,0,255 );
-      textSize(12);
-      textAlign(CENTER, CENTER);
-      text(gridNum, xPos + cellSize / 2, yPos + cellSize / 2);
-    }
-  }
+  //     fill( 0,0,0,255 );
+  //     textSize(12);
+  //     textAlign(CENTER, CENTER);
+  //     text(gridNum, xPos + cellSize / 2, yPos + cellSize / 2);
+  //   }
+  // }
 
   for ( let y = 0; y < gameMap.length + 1; y++ ){
     let firstSegStart = [ 0, gridSize - y ];
