@@ -1,6 +1,6 @@
 const gridSize = 50;
 const lineChangeAmount = 1;
-const gapDistance = 8;
+const gapDistance = 12;
 let cellSize;
 
 let gameMap = []
@@ -61,21 +61,22 @@ function draw() {
     }
   }
 
-  for ( let y = 0; y < gameMap.length; y++ ){
-    let firstSegStart = [ 0, y ];
-    let firstSegEnd = [ gameMap[y], y ];
+  for ( let y = 0; y < gameMap.length + 1; y++ ){
+    let firstSegStart = [ 0, gridSize - y ];
+    let firstSegEnd = [ gameMap[y], gridSize - y ];
     drawLine( firstSegStart, firstSegEnd );
-    let secondSegStart = [ gameMap[y] + gapDistance, y ];
-    let secondSegEnd = [ gridSize, y ];
+    let secondSegStart = [ gameMap[y] + gapDistance, gridSize - y ];
+    let secondSegEnd = [ gridSize, gridSize - y ];
     drawLine( secondSegStart, secondSegEnd );
+
+    if ( y === 1 ) {
+      let playerPosX = (gameMap[y] + Math.floor(gapDistance / 2)) * cellSize
+      fill( 255, 0, 0, 255 )
+      rect( playerPosX, ( gridSize - y ) * cellSize, cellSize, cellSize);
+    }
   }
   addMapLine();
-
-  if ( gameMap.length > gridSize )
-    gameMap.shift();
-
-  //console.log(gameMap.length)
-  // if ( gameMap.length < 2 ) {
-  //   addMapLine();
-  // }
+  if ( gameMap.length > gridSize + 1 ) {
+    gameMap.shift()
+  }
 }
